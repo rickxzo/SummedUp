@@ -7,7 +7,7 @@ Based on the uploaded FastAPI backend code.
 # Base URL
 
 ```txt
-http://127.0.0.1:8000
+https://summedup.onrender.com
 ```
 
 ---
