@@ -379,15 +379,4 @@ Required
 
 ---
 
-# Notes
 
-- Most mutating endpoints currently use `GET`; ideally these should be:
-  - `POST` for create actions
-  - `PUT/PATCH` for updates
-  - `DELETE` for deletions
-
-- JWT authentication is implemented using Bearer tokens.
-
-- Passwords are hashed using Werkzeug security utilities.
-
-- Database used: PostgreSQL (NeonDB).
