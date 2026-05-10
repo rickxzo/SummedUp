@@ -292,3 +292,35 @@ def upload_statement(
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         conn.close()
+
+
+@app.get("/analysis-report")
+def analysis_report(update_id: str, current_user: str = Depends(get_current_user)):
+    try:
+        conn = connect_db()
+        cur = conn.cursor()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Database connection error in Analysis Report")
+
+    try:
+        cur.execute("SELECT message FROM Statements WHERE update_id = %s", (update_id,))
+        statements = cur.fetchall()
+        report = {
+            "total_statements": len(statements),
+            "positive_feedback": 67,
+            "negative_feedback": 33,
+            "overview": "Amay proshno kore neel dhrubotara",
+            "key_insights": [
+                "Stakeholders are generally positive about the project",
+                "Some concerns about timeline and budget",
+                "Overall sentiment is optimistic"
+            ],
+            "recommendations": [
+                "Hail Abhilasha",
+                "Fuck Avijeet",
+                "Fuck Thamma (WITH DUE RESPECT)"
+            ]
+        }
+        return report
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error occurred while generating analysis report")
