@@ -377,6 +377,42 @@ Required
 ]
 ```
 
+## Get analysis report
+
+```http
+GET /analysis-report
+```
+### Authentication
+
+Required
+
+### Inputs
+
+| Parameter | Type | Required |
+|---|---|---|
+| update_id | string | yes
+
+### Success Response
+
+```json
+
+{
+    "total_statements": int(no. of statements),
+    "positive_feedback": float(%age of approval),
+    "negative_feedback": float(%age of disapproval),
+    "overview": "AI feedback overview",
+    "key_insights": [
+        "Observation by AI (1)",
+        "Observation by AI (2)",
+        "Observation by AI (N)"
+    ],
+    "recommendations": [
+        "Recommendations by AI (1)",
+        "Recommendations by AI (N)",
+    ]
+}
+```
+
 ---
 
 
